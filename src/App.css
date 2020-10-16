@@ -1,38 +1,282 @@
-.App {
-  text-align: center;
+html, body {
+  height: 100vh;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.container-fluid{
+  /* height: 100vh;
+
+  width: 180vh; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.bg{
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  display: flex;
+  align-content: center;
+  /* height: 100vh; */
+  background-image: url('./assets/blue.jpg');
+  /* width: 180vh; */
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container{
+  width: 80%;
+  max-width: 100%;
+  height: 100vh;
+  width: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+ 
+  
+  /* justify-content: center;
+  height: 90vh;
+  width: 90vh; */
+}
+.col{
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  /* align-self: center;
+  height: 80vh;
+  width: 80vh;
+  margin-left: 5vh; */
 }
 
-.App-link {
-  color: #61dafb;
+.card{
+  /* margin-left: 50px; */
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  height: 70vh;
+  width: 100%;
+  max-width: 80%;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+  padding: 20px;
+  /* width: 80vh;
+  height: 80vh; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.card-body{
+  width: 80%;
+  max-width: 100%;
+  height: 60vh;
+  /* margin-left: 55px; */
+}
+
+@media screen and (max-width:625px){
+  .card-body{
+    margin-top: -30px;
+    width: 80%;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.text{
+  text-align: center;
+}
+.text-img{
+  margin-top: 25px;
+  height: 50px;
+  width: 50px;
+}
+
+.login-form{
+  position: relative;
+  margin-top: 60px;
+}
+/* .login-form.login-button{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+} */
+
+.form-control{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-top: 10px;
+  border: 5px snow;
+  border-radius: 5px;
+  width: 96%;
+  height: 40px;
+  padding-left: 15px;
+}
+label{
+  margin-top: 70px;
+}
+input:hover{
+  border: lawngreen;
+
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+}
+input[type='email']{
+  /* display: flex;
+  flex-wrap: wrap; */
+  margin-top: 8px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  width: 90%;
+  height: 40px;
+  border: none;
+  border: 0px whitesmoke;
+  border-color: white;
+  background-color: white;
+}
+input[type='email']:focus {
+  border-radius: 10px;
+  border: 9px red;
+}
+
+.email-icon{
+  padding: 10px;
+}
+
+input[type='password']{
+  border-radius: 10px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  width: 90%;
+  height: 40px;
+  border: 0px whitesmoke;
+  border-color: white;
+  background-color: white;
+}
+
+.password-icon{
+  padding: 10px;
+}
+
+.label-password{
+  margin-top: 500px;
+}
+.submit-button{
+  display: flex;
+  flex-direction: row;
+  justify-content: inherit;
+
+}
+.login-button{
+  
+  margin-top: 15px;
+  height: 40px;
+  border: 0px;
+  border-radius: 10px;
+  width: 100%;
+  background-color: rgb(69, 120, 197);
+  color: #fff;
+}
+.login-button:hover{
+  background-color: rgb(106, 168, 240);
+  border: #fff;
+}
+@media screen and (max-width:625px){
+  .login-button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
+}
+
+.email-error{
+  color: red;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+.password-error{
+  color: red;
+  font-weight: normal;
+}
+.trigger{
+  /* display: flex;
+  flex-direction: column;
+  justify-content: start; */
+  margin-top: 20px;
+  margin-left: 150px;
+  float: left;
+  /*font-size: 25px; */
+  /* margin-right: 100vh; */
+}
+.dropdown-profile{
+  float: right;
+}
+.dummy-link{
+  float: inline-start;
+  text-align: center;
+  color: black;
+}
+
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.trigger:active{
+  /* margin-left: 200px;
+  transition: */
+}
+
+.logo {
+  /* height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px; */
+}
+.search-input{
+  float: left;
+  height:40px;
+  width:300px;
+  margin-top:15px;
+  border-radius:10px;
+  margin-Left:20px;
+}
+
+
+@media screen and (max-width:855px){
+  .search-input{
+    width: 150px;
+  }
+}
+
+@media screen and (max-width:625px){
+  .trigger{
+    margin-left: 20px;
+  }
+  .search-input{
+    width: 150px;
+  }
+  .site-layout-background-sider{
+    width: inherit;
+  }
+  
 }
