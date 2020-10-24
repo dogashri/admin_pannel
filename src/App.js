@@ -9,6 +9,9 @@ import store from './store';
 import Login from './Components/Login/Login';
 import Users from './Components/Pages/Users';
 import UsersDash from './Components/Pages/Layout'
+import Tickets from './Components/Pages/Tickets';
+import TicketByCinema from './Components/Pages/TicketByCinema';
+import TransactionHistory from './Components/Pages/TransactionHistory'
 
 const App = ()=> {
 
@@ -19,7 +22,10 @@ const App = ()=> {
       <Route exact path='/' component={Login} />
       {/* <section className='container'></section> */}
       <Switch>
-        <Route exact path = '/usersDash' component={UsersDash}/>
+        <Route exact path = '/usersDash' component={Users}/>
+        <Route exact path = '/cinema' component={Tickets}/>
+        <Route exact path = '/tickets' component={TicketByCinema}/>
+        <Route exact path = '/transaction' component={TransactionHistory}/>
       </Switch>
   </Fragment>
   </Router>

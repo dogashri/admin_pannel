@@ -1,4 +1,4 @@
-import {LOGIN_STARTED,LOGIN_SUCCESS,LOGIN_FAILED} from '../actions/types'
+import {LOGIN_STARTED,LOGIN_SUCCESS,LOGIN_FAILED,LOGOUT} from '../actions/types'
 
 const initialState = {
     loading:false,
@@ -15,11 +15,16 @@ export default function(state=initialState,action){
             return{...state,loading:true};
 
         case LOGIN_SUCCESS:
-            return{...state,loggedIn:true,token:payload.token,email:payload.email};
+            return{loading:false,loggedIn:true,token:payload.token,email:payload.email,loginErrorMessage:null};
 
         case LOGIN_FAILED:
-            return{...state,loginErrorMessage:payload.message};
-            
+            return{...state,loading:false,loginErrorMessage:payload.message};
+
+        case LOGOUT:
+            localStorage.clear()
+            return{
+                ...initialState
+            }
         default:
             return state
     }

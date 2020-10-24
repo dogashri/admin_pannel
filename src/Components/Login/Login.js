@@ -6,17 +6,20 @@ import * as Yup from 'yup';
 import Card from 'react-bootstrap/Card'
 import { Button, Container, FormGroup } from 'react-bootstrap';
 import { MailTwoTone,LockTwoTone } from '@ant-design/icons';
-import { Form , Input } from 'antd';
-import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { Form , Input,Spin } from 'antd';
+import { EyeInvisibleOutlined, EyeTwoTone,LoadingOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 
 import {login} from '../../actions/authentication';
+import { Redirect } from 'react-router-dom';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email().required('Email is required'),
   password:Yup.string().min(5,'Too short password').max(20,'Too Long Password')
   .required('Password is required')
 })
+
+
 
 const LoginForm = ({login,token}) => {
 
@@ -47,6 +50,13 @@ const handleFocus = (event)=>{
     setPasswordFocus(true)
   }
 }
+const loadSpin = <LoadingOutlined style={{ fontSize: 24 }} spin />
+
+if(token){ 
+  return <Redirect to = '/usersDash'/>
+}else{
+
+
     return (
         <div className = 'container-fluid'>
             <div className = 'bg'>
@@ -94,7 +104,11 @@ const handleFocus = (event)=>{
                                    </Form.Item>
 
                                 <div className='submit-button'>
-                                <Button onClick={formik.handleSubmit} type='submit' className = 'login-button' disabled={formik.isSubmitting}>Submit {formik.isSubmitting}</Button>
+                                <Button onClick={formik.handleSubmit} type='submit' className = 'login-button'
+                                 disabled={formik.isSubmitting}>Submit 
+                                 {formik.isSubmitting &&
+                                 <Spin indicator={loadSpin}></Spin>
+                                 }</Button>
                                 </div>
                                </Form>
                               </div>
@@ -105,6 +119,7 @@ const handleFocus = (event)=>{
             </div>
         </div>
     )
+  }
 }
 
 const StyledInput = styled(Input)`

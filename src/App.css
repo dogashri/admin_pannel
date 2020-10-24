@@ -276,7 +276,9 @@ input[type='password']{
     width: 150px;
   }
   .site-layout-background-sider{
-    width: inherit;
+    display: flex;
   }
   
 }
+
+https://admindev.mobiuscrypto.io/api/v1/getallcinema
