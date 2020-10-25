@@ -6,9 +6,10 @@ import { connect } from 'react-redux';
 import * as ReactBootStrap from 'react-bootstrap';
 import Spinner from '../../assets/spinner';
 import LayoutPage from './Layout';
+import {getTransaction} from '../../actions/transaction';
 
 
-const Users = ({loadUser,usersList,loading}) => {
+const Users = ({loadUser,getTransaction, usersList,loading}) => {
     useEffect(()=>{
     loadUser()
     },[])
@@ -78,7 +79,7 @@ const CustomVerification = ({text,status})=>{
         {
         title:'Action',
         key:'action',
-        render:(text,record)=>(<Space><a onClick={()=>history.push('/transaction')}>View Transaction History</a>|
+        render:(text,record)=>(<Space><a onClick={()=>{getTransaction('ETH',record._id); history.push('/transaction')}}>View Transaction History</a>|
         <a href = "">View Referrel earning</a>|<a href="">View Referrel Contacts</a>|<br/>
         <a href="">View Balances</a>|<a href="">View Tickets</a>
         </Space>)
@@ -106,7 +107,7 @@ const mapStateToProps = state=>({
     usersList:state.users.usersList,
     loading:state.authentication.loading
 })
-export default connect(mapStateToProps,{loadUser}) (Users)
+export default connect(mapStateToProps,{loadUser,getTransaction}) (Users)
 
 
 const colors={
