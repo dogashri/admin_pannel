@@ -80,10 +80,16 @@ const CustomVerification = ({text,status})=>{
         {
         title:'Action',
         key:'action',
-        render:(text,record)=>(<Space><Link to ={{pathname:'/transaction',state:{
+        render:(text,record)=>(<Space>
+            <Link to ={{pathname:'/transaction',state:{
             userID:record._id
-        }}}>View Transaction History</Link>|
-        <a href = "">View Referrel earning</a>|<a href="">View Referrel Contacts</a>|<br/>
+            }}}>View Transaction History</Link>|
+
+        <Link to = {{pathname:'/referralEarning',
+        state:{
+            userID:record._id
+        }
+    }}>View Referrel earning</Link>|<a href="">View Referrel Contacts</a>|<br/>
         <a href="">View Balances</a>|<a href="">View Tickets</a>
         </Space>)
         }
