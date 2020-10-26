@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {useHistory} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import {Divider, Table, Tag,Badge, Space} from 'antd';
 import {loadUser} from '../../actions/users'
 import { connect } from 'react-redux';
@@ -12,6 +12,7 @@ import {getTransaction} from '../../actions/transaction';
 const Users = ({loadUser,getTransaction, usersList,loading}) => {
     useEffect(()=>{
     loadUser()
+    getTransaction()
     },[])
 console.log(usersList);
 const history = useHistory()
@@ -79,7 +80,9 @@ const CustomVerification = ({text,status})=>{
         {
         title:'Action',
         key:'action',
-        render:(text,record)=>(<Space><a onClick={()=>{getTransaction('ETH',record._id); history.push('/transaction')}}>View Transaction History</a>|
+        render:(text,record)=>(<Space><Link to ={{pathname:'/transaction',state:{
+            userID:record._id
+        }}}>View Transaction History</Link>|
         <a href = "">View Referrel earning</a>|<a href="">View Referrel Contacts</a>|<br/>
         <a href="">View Balances</a>|<a href="">View Tickets</a>
         </Space>)

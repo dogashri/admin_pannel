@@ -1,7 +1,8 @@
 import {TRANSACTION_LOADED,TRANSACTION_ERROR} from './types';
 import axios from 'axios';
 
-export const getTransaction = (value,userID,pageNumber=1,perPage=10)=>async(dispatch,getState)=>{
+export const getTransaction = (value,userID,pageNumber,perPage=10)=>async(dispatch,getState)=>{
+    console.log('transaction action chal rha')
     axios.get(`https://admindev.mobiuscrypto.io/api/v1/gettransaction/${value}/${pageNumber}/${perPage}/${userID}`,{
         headers:{
             'Authorization':`bearer ${getState().authentication.token}`

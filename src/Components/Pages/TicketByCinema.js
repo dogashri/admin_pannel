@@ -20,7 +20,7 @@ const TicketByCinema = ({ticketsList }) => {
     }
     const CustomreturnValue=({text})=>{
         return(<>
-            [text]
+            {text[0]}
             </>
         )
     }
