@@ -13,6 +13,8 @@ import Tickets from './Components/Pages/Tickets';
 import TicketByCinema from './Components/Pages/TicketByCinema';
 import TransactionHistory from './Components/Pages/TransactionHistory';
 import ReferralEarning from './Components/Pages/ReferralEarning';
+import ReferralContacts from './Components/Pages/ReferralContacts';
+import AllTickets from './Components/Pages/AllTickets';
 
 const App = ()=> {
 
@@ -28,6 +30,8 @@ const App = ()=> {
         <Route exact path = '/tickets' component={TicketByCinema}/>
         <Route exact path = '/transaction' component={TransactionHistory}/>
         <Route exact path = '/referralEarning' component = {ReferralEarning}/>
+        <Route exact path = '/referralContacts' component = {ReferralContacts}/>
+        <Route exact path = '/allTickets' component = {AllTickets}/>
       </Switch>
   </Fragment>
   </Router>

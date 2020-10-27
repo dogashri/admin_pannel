@@ -5,6 +5,8 @@ import getCinema from './cinema';
 import ticketByCinema from './ticketByCinema';
 import transactionHistory from './transactionHistory';
 import refrelEarning from './referelEarning';
+import referralContacts from './referralContacts';
+import allTickets from './allTickets';
 
 export default combineReducers({
     authentication,
@@ -12,5 +14,7 @@ export default combineReducers({
     getCinema,
     ticketByCinema,
     transactionHistory,
-    refrelEarning
+    refrelEarning,
+    referralContacts,
+    allTickets
 })

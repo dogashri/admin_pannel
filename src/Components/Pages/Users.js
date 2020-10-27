@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {Link, useHistory} from 'react-router-dom'
-import {Divider, Table, Tag,Badge, Space} from 'antd';
+import {Divider, Table, Tag,Badge, Space,Modal} from 'antd';
 import {loadUser} from '../../actions/users'
 import { connect } from 'react-redux';
 import * as ReactBootStrap from 'react-bootstrap';
@@ -10,22 +10,19 @@ import {getTransaction} from '../../actions/transaction';
 
 
 const Users = ({loadUser,getTransaction, usersList,loading}) => {
-    useEffect(()=>{
-    loadUser()
-    getTransaction()
-    },[])
+    // useEffect(()=>{
+    // loadUser()
+    // getTransaction()
+    // },[])
 console.log(usersList);
 const history = useHistory()
-// console.log(loggedIn);
 const data = usersList;
-// console.log(data[0].isVerified)
+
 
 const CustomStatus = ({text,status}) => {
     const color = status?"success":"error"
     return (<>
-    {/* <Flex style={{fontSize:"10px",justifyContent:"left",padding:"0em",paddingLeft:"0.5em"}}> */}
      <Badge status={color} text={text}  />
-    {/* </Flex> */}
     </>)
 }
 const CustomVerification = ({text,status})=>{
@@ -36,6 +33,9 @@ const CustomVerification = ({text,status})=>{
         </>
     )
 }
+const[modal,setModal] = useState(false);
+const[ethAddress,setEthAddress] = useState(null)
+const [tag,setTag] = useState(null)
 
     const columns = [
         {
@@ -81,16 +81,29 @@ const CustomVerification = ({text,status})=>{
         title:'Action',
         key:'action',
         render:(text,record)=>(<Space>
-            <Link to ={{pathname:'/transaction',state:{
+            <Link to ={{pathname:'/transaction',
+            state:{
             userID:record._id
             }}}>View Transaction History</Link>|
 
-        <Link to = {{pathname:'/referralEarning',
-        state:{
-            userID:record._id
-        }
-    }}>View Referrel earning</Link>|<a href="">View Referrel Contacts</a>|<br/>
-        <a href="">View Balances</a>|<a href="">View Tickets</a>
+           <Link to = {{pathname:'/referralEarning',
+           state:{
+           userID:record._id
+           }}}>View Referrel earning</Link>|
+
+           <Link to={{pathname:'/referralContacts',
+           state:{userID:record._id
+           }}}>View Referrel Contacts</Link>|
+           <br/>
+
+           <a onClick={()=>{setModal(!modal);
+            setEthAddress(record.ethAddress);
+            setTag(record.tag)
+            }} >View Balances</a>|
+
+           <Link to = {{pathname:'/allTickets',
+           state:{userID:record._id
+           }}}>View Tickets</Link>
         </Space>)
         }
                     ]
@@ -104,7 +117,16 @@ const CustomVerification = ({text,status})=>{
         <LayoutPage>
 {loading===true?<Spinner/>:
         <Table style={{float:'center',padding:'10px'}} rowKey={null} columns={columns} dataSource={data} onChange={onChange} scroll={{x:1000}}>
+            
         </Table>}
+        <Modal
+        visible={modal}
+        onCancel={()=>setModal(!modal)}
+        onOk={()=>setModal(!modal)}
+        >
+            <p>Eth Address-<br/>{ethAddress}</p>
+<p>tag- <br/>{tag} </p>
+</Modal>
         </LayoutPage>
 
         /* {!loading?<Spinner animation="border" style={{width:'200px',margin:'auto',display:'block'}}/>: */

@@ -10,20 +10,33 @@ const ReferralEarning = ({getReferralEarning,referralEarn}) => {
     const location = useLocation()
     useEffect(()=>{
         getReferralEarning(location.state.userID,1,10)
-    })
+    },[])
+
+    const CustomName = ({text})=>{
+        return(<>
+               { text.firstName+" "} {text.lastName}
+        </>)
+    }
+    const CustomEmail = ({text})=>{
+        return(<>
+        {text.email}
+        </>)
+    }
 
     const columns = [
         {
-            title:'First Name',
-            dataIndex:'firstName'
-        },
-        {
-            title:'Last Name',
-            dataIndex:'lastName'
+            title:'Full Name',
+            dataIndex:'user',
+            render:(text,record)=><CustomName
+            text = {record.user}
+            ></CustomName>
         },
         {
             title:'Email',
-            dataIndex:'email'
+            dataIndex:'email',
+            render:(text,record)=><CustomEmail
+            text={record.user}
+            ></CustomEmail>
         },
         {
             title:'Type',
