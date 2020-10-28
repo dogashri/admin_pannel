@@ -7,6 +7,7 @@ import transactionHistory from './transactionHistory';
 import refrelEarning from './referelEarning';
 import referralContacts from './referralContacts';
 import allTickets from './allTickets';
+import setting from './setting';
 
 export default combineReducers({
     authentication,
@@ -16,5 +17,6 @@ export default combineReducers({
     transactionHistory,
     refrelEarning,
     referralContacts,
-    allTickets
+    allTickets,
+    setting
 })

@@ -15,6 +15,7 @@ import TransactionHistory from './Components/Pages/TransactionHistory';
 import ReferralEarning from './Components/Pages/ReferralEarning';
 import ReferralContacts from './Components/Pages/ReferralContacts';
 import AllTickets from './Components/Pages/AllTickets';
+import Setting from './Components/Pages/Setting';
 
 const App = ()=> {
 
@@ -32,6 +33,7 @@ const App = ()=> {
         <Route exact path = '/referralEarning' component = {ReferralEarning}/>
         <Route exact path = '/referralContacts' component = {ReferralContacts}/>
         <Route exact path = '/allTickets' component = {AllTickets}/>
+        <Route exact path = '/setting' component = {Setting}/>
       </Switch>
   </Fragment>
   </Router>

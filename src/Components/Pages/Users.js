@@ -10,10 +10,10 @@ import {getTransaction} from '../../actions/transaction';
 
 
 const Users = ({loadUser,getTransaction, usersList,loading}) => {
-    // useEffect(()=>{
-    // loadUser()
+    useEffect(()=>{
+    loadUser()
     // getTransaction()
-    // },[])
+    },[])
 console.log(usersList);
 const history = useHistory()
 const data = usersList;
@@ -36,6 +36,11 @@ const CustomVerification = ({text,status})=>{
 const[modal,setModal] = useState(false);
 const[ethAddress,setEthAddress] = useState(null)
 const [tag,setTag] = useState(null)
+const [ethBalance,setEthBalance] = useState(null)
+const [mobiBalance,setMobiBalance] = useState(null);
+const [pazziBalance,setPazziBalance] = useState(null);
+const [xrpBalance,setXrpBalance] = useState(null)
+const [usdtBalance,setUsdtBalance] = useState(null);
 
     const columns = [
         {
@@ -99,6 +104,11 @@ const [tag,setTag] = useState(null)
            <a onClick={()=>{setModal(!modal);
             setEthAddress(record.ethAddress);
             setTag(record.tag)
+            setEthBalance(record.ethBalance)
+            setMobiBalance(record.mobiBalance)
+            setPazziBalance(record.pazziBalance)
+            setXrpBalance(record.xrpBalance)
+            setUsdtBalance(record.usdtBalance)
             }} >View Balances</a>|
 
            <Link to = {{pathname:'/allTickets',
@@ -124,8 +134,13 @@ const [tag,setTag] = useState(null)
         onCancel={()=>setModal(!modal)}
         onOk={()=>setModal(!modal)}
         >
-            <p>Eth Address-<br/>{ethAddress}</p>
-<p>tag- <br/>{tag} </p>
+            <p>Ethereum Address-<br/>{ethAddress}</p>
+            <p>tag- <br/>{tag} </p>
+            <p>ETH Balance- <br/> {ethBalance}</p>
+            <p>MOBI Balance- <br/> {mobiBalance}</p>
+            <p>PAZZI Balance- <br/> {pazziBalance}</p>
+            <p>XRP Balance- <br/> {xrpBalance}</p>
+            <p>USDT Balance- <br/> {usdtBalance}</p>
 </Modal>
         </LayoutPage>
 

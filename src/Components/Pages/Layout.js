@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { Layout,Input, Menu,Avatar,Dropdown, Breadcrumb, Row } from 'antd';
 import { MenuUnfoldOutlined,SearchOutlined,
-    MenuFoldOutlined,UserOutlined,BellOutlined,GlobalOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+    MenuFoldOutlined,UserOutlined,BellOutlined,GlobalOutlined, LaptopOutlined, NotificationOutlined,SettingTwoTone,VideoCameraTwoTone } from '@ant-design/icons';
 import styled from 'styled-components';
 import Users from './Users';
 import Tickets from './Tickets';
@@ -90,13 +90,11 @@ const LayoutPage = ({logout,token,children})=> {
                             <Menu.Item key="3">option3</Menu.Item>
                             <Menu.Item key="4">option4</Menu.Item>
                         </SubMenu>
-                        <Menu.Item key="sub2" onClick={()=>history.push('/cinema')} icon={<LaptopOutlined />}>
+                        <Menu.Item key="sub2" onClick={()=>history.push('/cinema')} icon={<VideoCameraTwoTone />}>
                             Cinemas
-                            {/* <Menu.Item key="5" href='/usersDash' >option5</Menu.Item>
-                            <a className='dummy-link' href='/'><Menu.Item key="6">option6</Menu.Item></a>
-                            <Menu.Item key="7">option7</Menu.Item>
-                            <Menu.Item key="8">option8</Menu.Item> */}
                         </Menu.Item>
+                        <MenuItem key = "sub3" onClick={()=>history.push('/setting')} icon ={<SettingTwoTone />}>Setting</MenuItem>
+                        
                         <SubMenu key="sub3" icon={<NotificationOutlined />} title="subnav 3">
                             <Menu.Item key="9">option9</Menu.Item>
                             <Menu.Item key="10">option10</Menu.Item>

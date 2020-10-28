@@ -131,7 +131,7 @@ html, body {
   padding-left: 15px;
 }
 label{
-  margin-top: 70px;
+  /* margin-top: 70px; */
 }
 input:hover{
   border: lawngreen;
