@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Row } from 'antd';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox,Modal } from 'antd';
 import LayoutPage from './Layout';
+import SettingUpdateModal from './SettingUpdateModal';
 import {getSetting} from '../../actions/setting'
 import { connect } from 'react-redux';
 
@@ -16,6 +17,7 @@ function Setting({getSetting,settingData}) {
     const[maxWithdrawal,setMaxWithdrawal] = useState(settingData.maxWithdrawal)
     const[withdrawalFees,setWithdrawalFees] = useState(settingData.withdrawalFees)
     const[minAdminFund,setMinAdminFund] = useState(settingData.minAdminFund)
+    const[modal,setModal] = useState(false);
     console.log(minDeposit)
     // const{settingDataList} = formData;
     // const onChange = e => setFormData({...formData,[e.target.name]:e.target.value});
@@ -31,24 +33,27 @@ function Setting({getSetting,settingData}) {
             label="ETH"
             name="ETH"><br/>
                 <Input name="eth" value={minDeposit.eth }
-                onChange={(value)=>setMinDeposit(value)} ></Input>
+                onChange={(event)=>{
+                    // console.log(event.target.value)
+                    setMinDeposit({...minDeposit,eth:event.target.value})
+                }} ></Input>
             </Form.Item>
             <Form.Item
             label="MOBI"
             name="MOBI"><br/>
                 <Input value={minDeposit.mobi}
-                onChange={(value)=>setMinDeposit(value)}
+                onChange={(event)=>setMinDeposit({...minDeposit,mobi:event.target.value})}
                 ></Input>
             </Form.Item>
             <Form.Item
             label="PAZZI"
             name="PAZZI"><br/>
                 <Input value={minDeposit.pazzi}
-                onChange={(value)=>setMinDeposit(value)}
+                onChange={(event)=>setMinDeposit({...minDeposit,pazzi:event.target.value})}
                 ></Input>
             </Form.Item>
             </Form>
-            <Button style={{width:'100%'}}>Update</Button>
+            <Button onClick={()=>{setModal(!modal)}} style={{width:'100%'}}>Update</Button>
         </Card>
       </Col>
 
@@ -59,35 +64,35 @@ function Setting({getSetting,settingData}) {
             label="ETH"
             name="ETH"><br/>
                 <Input value={withdrawalFees.eth}
-                onChange={(value)=>setWithdrawalFees(value)}
+                onChange={(event)=>setWithdrawalFees({...withdrawalFees,eth:event.target.value})}
                 ></Input>
             </Form.Item>
             <Form.Item
             label="MOBI"
             name="MOBI"><br/>
                 <Input value={withdrawalFees.mobi}
-                onChange={(value)=>setWithdrawalFees(value)}
+                onChange={(event)=>setWithdrawalFees({...withdrawalFees,mobi:event.target.value})}
                 ></Input>
             </Form.Item>
             <Form.Item
             label="PAZZI"
             name="PAZZI"><br/>
                 <Input value={withdrawalFees.pazzi}
-                onChange={(value)=>setWithdrawalFees(value)}
+                onChange={(event)=>setWithdrawalFees({...withdrawalFees,pazzi:event.target.value})}
                 ></Input>
             </Form.Item>
             <Form.Item
             label="USDT"
             name="USDT"><br/>
                 <Input value={withdrawalFees.usdt}
-                onChange={(value)=>setWithdrawalFees(value)}
+                onChange={(event)=>setWithdrawalFees({...withdrawalFees,usdt:event.target.value})}
                 ></Input>
             </Form.Item>
             <Form.Item
             label="XRP"
             name="XRP"><br/>
                 <Input value={withdrawalFees.xrp}
-                onChange={(value)=>setWithdrawalFees(value)}
+                onChange={(event)=>setWithdrawalFees({...withdrawalFees,xrp:event.target.value})}
                 ></Input>
             </Form.Item>
             
@@ -105,35 +110,35 @@ function Setting({getSetting,settingData}) {
             label="ETH"
             name="ETH"><br/>
                 <Input value={minWithdrawal.eth}
-                 onChange={(value)=>setMinWithdrawal(value)}
+                 onChange={(event)=>setMinWithdrawal({...minWithdrawal,eth:event.target.value})}
                 ></Input>
             </Form.Item>
             <Form.Item
             label="MOBI"
             name="MOBI"><br/>
                 <Input value={minWithdrawal.mobi}
-                 onChange={(value)=>setMinWithdrawal(value)}
+                 onChange={(event)=>setMinWithdrawal({...minWithdrawal,mobi:event.target.value})}
                 ></Input>
             </Form.Item>
             <Form.Item
             label="PAZZI"
             name="PAZZI"><br/>
                 <Input value={minWithdrawal.pazzi}
-                 onChange={(value)=>setMinWithdrawal(value)}
+                 onChange={(event)=>setMinWithdrawal({...minWithdrawal,pazzi:event.target.value})}
                 ></Input>
             </Form.Item>
             <Form.Item
             label="USDT"
             name="USDT"><br/>
                 <Input value={minWithdrawal.usdt}
-                 onChange={(value)=>setMinWithdrawal(value)}
+                 onChange={(event)=>setMinWithdrawal({...minWithdrawal,usdt:event.target.value})}
                 ></Input>
             </Form.Item>
             <Form.Item
             label="XRP"
             name="XRP"><br/>
                 <Input value={minWithdrawal.xrp}
-                 onChange={(value)=>setMinWithdrawal(value)}
+                 onChange={(event)=>setMinWithdrawal({...minWithdrawal,xrp:event.target.value})}
                 ></Input>
             </Form.Item>
             
@@ -148,32 +153,32 @@ function Setting({getSetting,settingData}) {
             label="ETH"
             name="ETH"><br/>
                 <Input
-                value={maxWithdrawal.xrp}
-                onChange={(value)=>setMaxWithdrawal(value)} 
+                value={maxWithdrawal.eth}
+                onChange={(event)=>setMaxWithdrawal({...maxWithdrawal,eth:event.target.value})} 
                 ></Input>
             </Form.Item>
             <Form.Item
             label="MOBI"
             name="MOBI"><br/>
                 <Input
-                value={maxWithdrawal.xrp}
-                onChange={(value)=>setMaxWithdrawal(value)}
+                value={maxWithdrawal.mobi}
+                onChange={(event)=>setMaxWithdrawal({...maxWithdrawal,mobi:event.target.value})}
                 ></Input>
             </Form.Item>
             <Form.Item
             label="PAZZI"
             name="PAZZI"><br/>
                 <Input
-                value={maxWithdrawal.xrp}
-                onChange={(value)=>setMaxWithdrawal(value)}
+                value={maxWithdrawal.pazzi}
+                onChange={(event)=>setMaxWithdrawal({...maxWithdrawal,pazzi:event.target.value})}
                 ></Input>
             </Form.Item>
             <Form.Item
             label="USDT"
             name="USDT"><br/>
                 <Input
-                value={maxWithdrawal.xrp}
-                onChange={(value)=>setMaxWithdrawal(value)}
+                value={maxWithdrawal.usdt}
+                onChange={(event)=>setMaxWithdrawal({...maxWithdrawal,usdt:event.target.value})}
                 ></Input>
             </Form.Item>
             <Form.Item
@@ -181,7 +186,7 @@ function Setting({getSetting,settingData}) {
             name="XRP"><br/>
                 <Input
                 value={maxWithdrawal.xrp}
-                onChange={(value)=>setMaxWithdrawal(value)}
+                onChange={(event)=>setMaxWithdrawal({...maxWithdrawal,xrp:event.target.value})}
                 ></Input>
             </Form.Item>
             
@@ -198,32 +203,32 @@ function Setting({getSetting,settingData}) {
             label="ETH"
             name="ETH"><br/>
                 <Input
-                value={minAdminFund.xrp}
-                onChange={(value)=>setMinAdminFund(value)}
+                value={minAdminFund.eth}
+                onChange={(event)=>setMinAdminFund({...minAdminFund,eth:event.target.value})}
                 ></Input>
             </Form.Item>
             <Form.Item
             label="MOBI"
             name="MOBI"><br/>
                 <Input
-                value={minAdminFund.xrp}
-                onChange={(value)=>setMinAdminFund(value)}
+                value={minAdminFund.mobi}
+                onChange={(event)=>setMinAdminFund({...minAdminFund,mobi:event.target.value})}
                 ></Input>
             </Form.Item>
             <Form.Item
             label="PAZZI"
             name="PAZZI"><br/>
                 <Input
-                value={minAdminFund.xrp}
-                onChange={(value)=>setMinAdminFund(value)}
+                value={minAdminFund.pazzi}
+                onChange={(event)=>setMinAdminFund({...minAdminFund,pazzi:event.target.value})}
                 ></Input>
             </Form.Item>
             <Form.Item
             label="USDT"
             name="USDT"><br/>
                 <Input
-                value={minAdminFund.xrp}
-                onChange={(value)=>setMinAdminFund(value)}
+                value={minAdminFund.usdt}
+                onChange={(event)=>setMinAdminFund({...minAdminFund,usdt:event.target.value})}
                 ></Input>
             </Form.Item>
             <Form.Item
@@ -231,7 +236,7 @@ function Setting({getSetting,settingData}) {
             name="XRP"><br/>
                 <Input
                 value={minAdminFund.xrp}
-                onChange={(value)=>setMinAdminFund(value)}
+                onChange={(event)=>setMinAdminFund({...minAdminFund,xrp:event.target.value})}
                 ></Input>
             </Form.Item>
             
@@ -241,6 +246,17 @@ function Setting({getSetting,settingData}) {
       </Col>
     </Row>
   </div>
+  <SettingUpdateModal
+    modal={modal}
+    setModal={setModal}
+  />
+  {/* <Modal
+        visible={modal}
+        onCancel={()=>setModal(!modal)}
+        onOk={()=>setModal(!modal)}
+        >
+
+        </Modal> */}
         </LayoutPage>
             
         </>
