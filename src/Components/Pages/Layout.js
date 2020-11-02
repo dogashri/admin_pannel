@@ -95,18 +95,16 @@ const LayoutPage = ({logout,token,children})=> {
                     // defaultOpenKeys={['sub1']}
                     style={{height:'100%',borderRight:0}}
                      >
-                         <SubMenu key="sub1" icon={<UserOutlined />} title="User List">
-                            <Menu.Item key="1" onClick={()=>setticketvisivle(!ticketvisible)} >option1</Menu.Item>
-                            <Menu.Item key="2">option2</Menu.Item>
-                            <Menu.Item key="3">option3</Menu.Item>
-                            <Menu.Item key="4">option4</Menu.Item>
-                        </SubMenu>
+                         <Menu.Item key="sub1" onClick={()=>history.push('/usersDash')} icon={<UserOutlined />}>
+                           Users List
+                        </Menu.Item>
                         <Menu.Item key="sub2" onClick={()=>history.push('/cinema')} icon={<VideoCameraTwoTone />}>
                             Cinemas
                         </Menu.Item>
-                        <MenuItem key = "sub3" onClick={()=>history.push('/setting')} icon ={<SettingTwoTone />}>Setting</MenuItem>
-                        
-                        <Menu.Item key="sub3" onClick={()=>history.push('/updatePassword')} icon={<UnlockTwoTone />} title="subnav 3">
+                        <MenuItem key = "sub3" onClick={()=>history.push('/setting')} icon ={<SettingTwoTone />} title="Setting">
+                             Setting
+                             </MenuItem>
+                        <Menu.Item key="sub4" onClick={()=>history.push('/updatePassword')} icon={<UnlockTwoTone />} title="Update Password">
                             Update Password
                         </Menu.Item>
                      </Menu>

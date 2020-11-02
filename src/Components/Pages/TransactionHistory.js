@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {useLocation} from 'react-router-dom'
 import {connect} from 'react-redux'
-import { Select,Table,Button,Space } from 'antd';
+import { Select,Table,Button,Space, Card } from 'antd';
 import LayoutPage from './Layout'
 import styled from 'styled-components';
 import {getTransaction} from '../../actions/transaction';
@@ -69,6 +69,7 @@ const columns = [
     return (
         <>
         <LayoutPage>
+          <Card style={{width:'100%'}}>
           <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignContent:"center"}}>
             <div style={{display:'flex',justifyContent:'center',width:'100%'}}>
             <Select className="select-design"
@@ -90,7 +91,7 @@ const columns = [
   dataSource={transactionList}
   pagination={{ current:pagination, pageSize:10,total:total,onChange:(page)=>setPagination(page)}}></Table>
   </div>
-  
+  </Card>
         
         </LayoutPage>
            

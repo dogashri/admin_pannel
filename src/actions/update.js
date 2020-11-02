@@ -9,7 +9,12 @@ export const getUpdate = (data,id,operation)=>async(dispatch,getState)=>{
             'Authorization':`bearer ${getState().authentication.token}`
         }
     }
-    const body = JSON.stringify({data,id,operation})
+    let body;
+    if(id){
+     body = JSON.stringify({data,id,operation})
+}else{
+     body = JSON.stringify({data,operation})
+}
     console.log('update is running')
     axios.post('https://admindev.mobiuscrypto.io/api/v1/update',body,config)
     .then((res)=>{
