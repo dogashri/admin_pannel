@@ -1,15 +1,20 @@
-import React,{Fragment, useReducer, useState} from 'react';
+import React,{Fragment, useEffect, useReducer, useState} from 'react';
 import {connect} from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { Layout,Input, Menu,Avatar,Dropdown, Breadcrumb, Row } from 'antd';
 import { MenuUnfoldOutlined,SearchOutlined,
-    MenuFoldOutlined,UserOutlined,BellOutlined,GlobalOutlined, LaptopOutlined, NotificationOutlined,SettingTwoTone,VideoCameraTwoTone } from '@ant-design/icons';
+    MenuFoldOutlined,UserOutlined,BellOutlined,GlobalOutlined,UnlockTwoTone, LaptopOutlined, NotificationOutlined,SettingTwoTone,VideoCameraTwoTone } from '@ant-design/icons';
 import styled from 'styled-components';
 import Users from './Users';
 import Tickets from './Tickets';
 import {logout} from '../../actions/authentication';
 import { Redirect } from 'react-router-dom';
 import MenuItem from 'antd/lib/menu/MenuItem';
+import {useMediaQuery, useMediaQueries} from '@react-hook/media-query';
+const Component = () => {
+    const matches = useMediaQuery('only screen and (min-width: 850px)')
+    return `Matches? ${matches ? 'Matched!' : 'Nope :('}`
+  }
 
 
 const { SubMenu } = Menu;
@@ -21,12 +26,17 @@ const { Search} = Input
 
 const LayoutPage = ({logout,token,children})=> {
     const history = useHistory();
-    
+    const matches = useMediaQuery('only screen and (min-width: 850px)')    
 
+   
     const[collapsed,setcollapsed] = useState(false)
     const toggle =()=> {setcollapsed(!collapsed)
         console.log('toggle is ok')
     }
+    useEffect(()=>{
+     setcollapsed(!matches)
+        console.log(matches)
+    },[matches])
     const [loggedin,setloggedin] = useState(true);
     const loggedOut =()=>{setloggedin(logout())
         console.log('logged out clicked')
@@ -77,6 +87,7 @@ const LayoutPage = ({logout,token,children})=> {
             </Header>
             <Layout>
                 <Sider trigger={null}
+                
                 collapsible collapsed={collapsed}
                 className = "site-layout-background-sider">
                     <Menu
@@ -95,12 +106,9 @@ const LayoutPage = ({logout,token,children})=> {
                         </Menu.Item>
                         <MenuItem key = "sub3" onClick={()=>history.push('/setting')} icon ={<SettingTwoTone />}>Setting</MenuItem>
                         
-                        <SubMenu key="sub3" icon={<NotificationOutlined />} title="subnav 3">
-                            <Menu.Item key="9">option9</Menu.Item>
-                            <Menu.Item key="10">option10</Menu.Item>
-                            <Menu.Item key="11">option11</Menu.Item>
-                            <Menu.Item key="12">option12</Menu.Item>
-                        </SubMenu>
+                        <Menu.Item key="sub3" onClick={()=>history.push('/updatePassword')} icon={<UnlockTwoTone />} title="subnav 3">
+                            Update Password
+                        </Menu.Item>
                      </Menu>
                 </Sider>
                 <Layout style={{ display:'flex', padding: '0 24px 24px' }}>

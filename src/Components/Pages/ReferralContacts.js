@@ -47,7 +47,7 @@ const ReferralContacts = ({getReferralContacts,contacts,total}) => {
     return (
         <>
         <LayoutPage>
-            <Table columns={columns} dataSource={contacts}></Table>
+            <Table style={{width:'100%'}} columns={columns} dataSource={contacts}></Table>
         </LayoutPage>
             
         </>

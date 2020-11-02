@@ -125,10 +125,9 @@ const [usdtBalance,setUsdtBalance] = useState(null);
 
     return (
         <LayoutPage>
-{loading===true?<Spinner/>:
-        <Table style={{float:'center',padding:'10px'}} rowKey={null} columns={columns} dataSource={data} onChange={onChange} scroll={{x:1000}}>
+        <Table loading={loading} style={{width:'100%',padding:'10px'}} rowKey={null} columns={columns} dataSource={data} onChange={onChange} scroll={{x:100}}>
             
-        </Table>}
+        </Table>
         <Modal
         visible={modal}
         onCancel={()=>setModal(!modal)}
@@ -151,7 +150,7 @@ const [usdtBalance,setUsdtBalance] = useState(null);
 }
 const mapStateToProps = state=>({
     usersList:state.users.usersList,
-    loading:state.authentication.loading
+    loading:state.users.loading
 })
 export default connect(mapStateToProps,{loadUser,getTransaction}) (Users)
 

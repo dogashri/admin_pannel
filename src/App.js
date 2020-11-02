@@ -1,7 +1,7 @@
 import React,{Fragment} from 'react';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import 'antd/dist/antd.css';
 
 import {Provider} from 'react-redux';
@@ -16,6 +16,7 @@ import ReferralEarning from './Components/Pages/ReferralEarning';
 import ReferralContacts from './Components/Pages/ReferralContacts';
 import AllTickets from './Components/Pages/AllTickets';
 import Setting from './Components/Pages/Setting';
+import UpdatePassword from './Components/Pages/ForgotPassword';
 
 const App = ()=> {
 
@@ -34,6 +35,7 @@ const App = ()=> {
         <Route exact path = '/referralContacts' component = {ReferralContacts}/>
         <Route exact path = '/allTickets' component = {AllTickets}/>
         <Route exact path = '/setting' component = {Setting}/>
+        <Route exact path = '/updatePassword' component = {UpdatePassword}/>
       </Switch>
   </Fragment>
   </Router>

@@ -32,6 +32,11 @@ const AllTickets = ({getAllTickets,allTickets,total}) => {
 
     const columns=[
         {
+            title:'S no.',
+            dataIndex:'key',
+            render:(text,record,index)=>index+1
+        },
+        {
             title:'Cinema Name',
             dataIndex:'avatarUrl',
             render:(text,record)=><CustomCInemaName
@@ -83,7 +88,7 @@ const AllTickets = ({getAllTickets,allTickets,total}) => {
     return (
         <>
         <LayoutPage>
-            <Table columns={columns} dataSource={allTickets}  scroll={{x:1000}}></Table>
+            <Table style={{width:'100%'}} columns={columns} dataSource={allTickets}  scroll={{x:1000}}></Table>
         </LayoutPage>
             
         </>

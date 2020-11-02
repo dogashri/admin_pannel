@@ -1,7 +1,10 @@
 import axios from 'axios';
-import {USERS_LOADED,USERS_ERROR,USERS_CLEAR} from './types';
+import {USER_LOAD_STARTED,USERS_LOADED,USERS_ERROR,USERS_CLEAR} from './types';
 
 export const loadUser = (pageNumber=1,perPage=10)=>async(dispatch,getState)=>{
+    dispatch({
+        type:USER_LOAD_STARTED
+    })
     await axios.get('https://admindev.mobiuscrypto.io/api/v1/getusers',{
         params:{pageNumber,perPage},
         headers:{

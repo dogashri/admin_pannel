@@ -51,7 +51,7 @@ const ReferralEarning = ({getReferralEarning,referralEarn}) => {
     return (
         <>
         <LayoutPage>
-            <Table columns={columns} dataSource={referralEarn}></Table>
+            <Table style={{width:"100%"}} columns={columns} dataSource={referralEarn}></Table>
         </LayoutPage>
             
         </>

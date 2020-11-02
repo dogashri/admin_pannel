@@ -8,6 +8,7 @@ import refrelEarning from './referelEarning';
 import referralContacts from './referralContacts';
 import allTickets from './allTickets';
 import setting from './setting';
+import update from './update';
 
 export default combineReducers({
     authentication,
@@ -18,5 +19,6 @@ export default combineReducers({
     refrelEarning,
     referralContacts,
     allTickets,
-    setting
+    setting,
+    update
 })

@@ -1,6 +1,7 @@
-import {USERS_LOADED,USERS_ERROR,USERS_CLEAR} from '../actions/types';
+import {USER_LOAD_STARTED,USERS_LOADED,USERS_ERROR,USERS_CLEAR} from '../actions/types';
 
 const initialState = {
+    loading:false,
     total:0,
     usersList:[],
     pageNumber:1,
@@ -11,8 +12,15 @@ const initialState = {
 export default function(state = initialState,action){
     const {type,payload} = action;
     switch(type){
+        case USER_LOAD_STARTED:
+        return{
+            ...state,
+            loading:true
+        }
         case USERS_LOADED:
             return{
+                ...state,
+                loading:false,
                 total:payload.total,
                 usersList:payload.usersList,
                 pageNumber:payload.pageNumber,

@@ -63,7 +63,7 @@ const TicketByCinema = ({ticketsList }) => {
     return (
         <>
         <LayoutPage>
-        <Table columns={columns} dataSource={ticketsList}>
+        <Table style={{width:'100%'}} columns={columns} dataSource={ticketsList}>
             
             </Table>
         </LayoutPage>

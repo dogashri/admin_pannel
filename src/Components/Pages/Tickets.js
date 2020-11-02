@@ -74,7 +74,7 @@ const Tickets = ({getCinema,cinemaList,getTicketByCinema}) => {
 
     return (<>
     <LayoutPage>
-    <Table style={{display:'flex',flexDirection:'inherit', float:'center'}} columns={columns} dataSource={cinemaList} >
+    <Table style={{width:'100%'}} columns={columns} dataSource={cinemaList} >
         </Table>
     </LayoutPage>
         
