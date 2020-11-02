@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { Layout,Input, Menu,Avatar,Dropdown, Breadcrumb, Row } from 'antd';
 import { MenuUnfoldOutlined,SearchOutlined,
-    MenuFoldOutlined,UserOutlined,BellOutlined,GlobalOutlined,UnlockTwoTone, LaptopOutlined, NotificationOutlined,SettingTwoTone,VideoCameraTwoTone } from '@ant-design/icons';
+    MenuFoldOutlined,UserOutlined,BellOutlined,GlobalOutlined,UnlockTwoTone,LogoutOutlined, LaptopOutlined, NotificationOutlined,SettingTwoTone,VideoCameraTwoTone } from '@ant-design/icons';
 import styled from 'styled-components';
 import Users from './Users';
 import Tickets from './Tickets';
@@ -95,18 +95,19 @@ const LayoutPage = ({logout,token,children})=> {
                     // defaultOpenKeys={['sub1']}
                     style={{height:'100%',borderRight:0}}
                      >
-                         <Menu.Item key="sub1" onClick={()=>history.push('/usersDash')} icon={<UserOutlined />}>
+                         <Menu.Item key="sub1" onClick={()=>history.push('/usersDash')} icon={<UserOutlined style={{color:'#1890ff',fontSize:'20px'}} />}>
                            Users List
                         </Menu.Item>
-                        <Menu.Item key="sub2" onClick={()=>history.push('/cinema')} icon={<VideoCameraTwoTone />}>
+                        <Menu.Item key="sub2" onClick={()=>history.push('/cinema')} icon={<VideoCameraTwoTone style={{color:'#1890ff',fontSize:'20px'}}/>}>
                             Cinemas
                         </Menu.Item>
-                        <MenuItem key = "sub3" onClick={()=>history.push('/setting')} icon ={<SettingTwoTone />} title="Setting">
+                        <MenuItem key = "sub3" onClick={()=>history.push('/setting')} icon ={<SettingTwoTone style={{color:'#1890ff',fontSize:'20px'}}/>} title="Setting">
                              Setting
                              </MenuItem>
-                        <Menu.Item key="sub4" onClick={()=>history.push('/updatePassword')} icon={<UnlockTwoTone />} title="Update Password">
+                        <Menu.Item key="sub4" onClick={()=>history.push('/updatePassword')} icon={<UnlockTwoTone style={{color:'#1890ff',fontSize:'20px'}}/>} title="Update Password">
                             Update Password
                         </Menu.Item>
+                        <Menu.Item key="sub5" onClick={()=>loggedOut()} icon={<LogoutOutlined style={{color:'#1890ff',fontSize:'20px'}} />}>Logout</Menu.Item>
                      </Menu>
                 </Sider>
                 <Layout style={{ display:'flex', padding: '0 24px 24px' }}>
