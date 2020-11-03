@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {USER_LOAD_STARTED,USERS_LOADED,USERS_ERROR,USERS_CLEAR} from './types';
 
-export const loadUser = (pageNumber=1,perPage=10)=>async(dispatch,getState)=>{
+export const loadUser = (pageNumber,perPage)=>async(dispatch,getState)=>{
     dispatch({
         type:USER_LOAD_STARTED
     })

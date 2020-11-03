@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import logo from '../../assets/logoicon.png'
 import { useFormik } from 'formik';
@@ -9,9 +9,13 @@ import { MailTwoTone,LockTwoTone } from '@ant-design/icons';
 import { Form , Input,Spin } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone,LoadingOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
-
+import { toast } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Alert } from 'antd';
 import {login} from '../../actions/authentication';
 import { Redirect } from 'react-router-dom';
+import Noty from 'noty';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email().required('Email is required'),
@@ -21,7 +25,18 @@ const LoginSchema = Yup.object().shape({
 
 
 
-const LoginForm = ({login,token}) => {
+const LoginForm = ({login,token,loggedIn}) => {
+  useEffect(()=>{
+    console.log('kuch v')
+    
+  //   new Noty({
+  //     text: 'Some notification text',
+  //     layout:"topCenter",
+  //     modal:true,
+  //     theme:"relax"
+  // }).show();
+  },[])
+  
 
   const [emailFocus, setEmailFocus] = useState(false)
   const [passwordFocus, setPasswordFocus] = useState(false)
@@ -50,7 +65,27 @@ const handleFocus = (event)=>{
     setPasswordFocus(true)
   }
 }
-const loadSpin = <LoadingOutlined style={{ fontSize: 24 }} spin />
+// const SuccessAlert = ( <Alert message="Informational Notes" type="info" showIcon />)
+// const ErrorAlert = (<Alert message="Error" type="error" showIcon />)
+// const loadSpin = <LoadingOutlined style={{ fontSize: 24 }} spin />
+
+if(loggedIn){
+  console.log('toast is running')
+  toast.success("Login Successful", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+});
+setTimeout(() => {
+    // history.push('/usersDash')
+}, 2000)
+}else {
+  console.log('else tost is running')
+  toast.error("something error", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+})}
 
 if(token){ 
   return <Redirect to = '/usersDash'/>
@@ -106,15 +141,18 @@ if(token){
                                 <div className='submit-button'>
                                 <Button onClick={formik.handleSubmit} type='submit' className = 'login-button'
                                  disabled={formik.isSubmitting}>Submit 
-                                 {formik.isSubmitting &&
-                                 <Spin indicator={loadSpin}></Spin>
-                                 }</Button>
+                                 {/* {formik.isSubmitting &&
+                                 <Spin indicator={loadSpin}
+                                 ></Spin> */}
+                                 </Button>
                                 </div>
                                </Form>
                               </div>
                         </Card.Body>
                       </Card>
+                      
                 </Container> 
+                {/* {loggedIn?SuccessAlert:ErrorAlert} */}
 
             </div>
         </div>
@@ -133,6 +171,7 @@ height:65px;
 
 const mapStateToProps = state =>({
   token:state.authentication.token,
+  loggedIn:state.authentication.loggedIn
 
 })
 export default connect(mapStateToProps,{login})(LoginForm)

@@ -10,10 +10,11 @@ import {getTransaction} from '../../actions/transaction';
 
 
 const Users = ({loadUser,getTransaction, usersList,loading}) => {
+    const [pagination,setPagination] = useState(1)
     useEffect(()=>{
-    loadUser()
+    loadUser(pagination,10)
     // getTransaction()
-    },[])
+    },[pagination])
 console.log(usersList);
 const history = useHistory()
 const data = usersList;
@@ -89,16 +90,16 @@ const [usdtBalance,setUsdtBalance] = useState(null);
             <Link to ={{pathname:'/transaction',
             state:{
             userID:record._id
-            }}}>View Transaction History</Link>|
+            }}}>View Transaction History</Link>
 
            <Link to = {{pathname:'/referralEarning',
            state:{
            userID:record._id
-           }}}>View Referrel earning</Link>|
+           }}}>View Referrel earning</Link>
 
            <Link to={{pathname:'/referralContacts',
            state:{userID:record._id
-           }}}>View Referrel Contacts</Link>|
+           }}}>View Referrel Contacts</Link>
            <br/>
 
            <a onClick={()=>{setModal(!modal);
@@ -109,7 +110,7 @@ const [usdtBalance,setUsdtBalance] = useState(null);
             setPazziBalance(record.pazziBalance)
             setXrpBalance(record.xrpBalance)
             setUsdtBalance(record.usdtBalance)
-            }} >View Balances</a>|
+            }} >View Balances</a>
 
            <Link to = {{pathname:'/allTickets',
            state:{userID:record._id
@@ -125,7 +126,9 @@ const [usdtBalance,setUsdtBalance] = useState(null);
 
     return (
         <LayoutPage>
-        <Table loading={loading} style={{width:'100%',padding:'10px'}} rowKey={null} columns={columns} dataSource={data} onChange={onChange} scroll={{x:100}}>
+        <Table loading={loading} style={{width:'100%',padding:'10px'}} rowKey={null} columns={columns} dataSource={data}
+        pagination={{ current:pagination, pageSize:10,onChange:(page)=>setPagination(page)}}
+        onChange={onChange} scroll={{x:100,y:500}}>
             
         </Table>
         <Modal

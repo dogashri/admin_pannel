@@ -79,15 +79,15 @@ const columns = [
     bordered={true}
     onChange={(value)=>setCurrency(value.value)}
   >
-    <Option value="ETH" onCLick={(e)=>console.log(e.target.value.value)}>ETH</Option>
-    <Option value="XRP" onCLick={(e)=>console.log(e.target.value.value)} >XRP</Option>
-    <Option value="MOBI" onCLick={(e)=>console.log(e.target.value.value)}>MOBI</Option>
-    <Option value="PAZZI" onCLick={(e)=>console.log(e.target.value.value)}>PAZZI</Option>
-    <Option value="USDT" onCLick={(e)=>console.log(e.target.value.value)}>USDT</Option>
+    <Option value="ETH" >ETH</Option>
+    <Option value="XRP" >XRP</Option>
+    <Option value="MOBI">MOBI</Option>
+    <Option value="PAZZI">PAZZI</Option>
+    <Option value="USDT">USDT</Option>
   </Select> 
   
   </div><br/>
-  <Table style={{width:'170vh', padding:'10px'}} columns={columns} 
+  <Table style={{width:'170vh', padding:'10px'}} columns={columns} scroll={{x:100,y:400}}
   dataSource={transactionList}
   pagination={{ current:pagination, pageSize:10,total:total,onChange:(page)=>setPagination(page)}}></Table>
   </div>

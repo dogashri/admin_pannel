@@ -3,6 +3,7 @@ import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import logo from './logo.svg';
 import './App.scss';
 import 'antd/dist/antd.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {Provider} from 'react-redux';
 import store from './store';
