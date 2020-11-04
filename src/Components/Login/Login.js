@@ -27,14 +27,7 @@ const LoginSchema = Yup.object().shape({
 
 const LoginForm = ({login,token,loggedIn}) => {
   useEffect(()=>{
-    console.log('kuch v')
     
-  //   new Noty({
-  //     text: 'Some notification text',
-  //     layout:"topCenter",
-  //     modal:true,
-  //     theme:"relax"
-  // }).show();
   },[])
   
 
@@ -68,24 +61,9 @@ const handleFocus = (event)=>{
 // const SuccessAlert = ( <Alert message="Informational Notes" type="info" showIcon />)
 // const ErrorAlert = (<Alert message="Error" type="error" showIcon />)
 // const loadSpin = <LoadingOutlined style={{ fontSize: 24 }} spin />
+// const notify = () => toast("Wow so easy !");
 
-if(loggedIn){
-  console.log('toast is running')
-  toast.success("Login Successful", {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-});
-setTimeout(() => {
-    // history.push('/usersDash')
-}, 2000)
-}else {
-  console.log('else tost is running')
-  toast.error("something error", {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-})}
+
 
 if(token){ 
   return <Redirect to = '/usersDash'/>
@@ -139,12 +117,16 @@ if(token){
                                    </Form.Item>
 
                                 <div className='submit-button'>
-                                <Button onClick={formik.handleSubmit} type='submit' className = 'login-button'
+                                <Button onClick={()=>{
+                                  formik.handleSubmit()
+                                  // notify()
+                                }} type='submit' className = 'login-button'
                                  disabled={formik.isSubmitting}>Submit 
                                  {/* {formik.isSubmitting &&
                                  <Spin indicator={loadSpin}
                                  ></Spin> */}
                                  </Button>
+                                 <ToastContainer />
                                 </div>
                                </Form>
                               </div>
